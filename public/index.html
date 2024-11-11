@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logistics Management Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2 class="logo">Logistics</h2>
+      <ul class="menu">
+        <li><button class="menu-item" onclick="showTab('deliveries')">Deliveries</button></li>
+        <li><button class="menu-item" onclick="showTab('inventory')">Inventory</button></li>
+        <li><button class="menu-item" onclick="showTab('orders')">Orders</button></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Dashboard Header -->
+      <header class="dashboard-header">
+        <h1>Logistics Management Dashboard</h1>
+      </header>
+
+      <!-- Dashboard Overview -->
+      <section class="dashboard-overview">
+        <div class="card">
+          <h3>Total Deliveries</h3>
+          <p id="total-deliveries">0</p>
+        </div>
+        <div class="card">
+          <h3>Total Inventory Items</h3>
+          <p id="total-inventory">0</p>
+        </div>
+        <div class="card">
+          <h3>Total Orders</h3>
+          <p id="total-orders">0</p>
+        </div>
+      </section>
+
+      <!-- Tab Content -->
+      <div class="tab-content" id="orders">
+        <h2>Orders</h2>
+        <input type="text" id="search-order-id" placeholder="Search by Order ID" />
+        <button class="btn-action" onclick="searchOrder()">Search</button>
+        <!-- <button class="btn-action" onclick="openForm('orderForm')">Add Order</button> -->
+        <table id="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer Name</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Status</th>
+              <!-- <th>Actions</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Deliveries Table -->
+      <div class="tab-content" id="deliveries">
+        <h2>Deliveries</h2>
+        <input type="text" id="search-delivery-id" placeholder="Search by Delivery ID" />
+        <button class="btn-action" onclick="searchDelivery()">Search</button>
+        <!-- <button class="btn-action" onclick="openForm('deliveryForm')">Add Delivery</button> -->
+        <table id="deliveries-table">
+          <thead>
+            <tr>
+              <th>Tracking ID</th>
+              <th>Order ID</th>
+              <th>Status</th>
+              <th>Location</th>
+              <th>Expected Delivery</th>
+              <!-- <th>Actions</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Inventory Table -->
+      <div class="tab-content" id="inventory">
+        <h2>Inventory</h2>
+        <input type="text" id="search-inventory-id" placeholder="Search by Product ID" />
+        <button class="btn-action" onclick="searchInventory()">Search</button>
+        <!-- <button class="btn-action" onclick="openForm('inventoryForm')">Add Product</button> -->
+        <table id="inventory-table">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <!-- <th>Actions</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeForm()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <form id="form-fields">
+      </form>
+      <button onclick="closeForm()">Close</button>
+      <button onclick="submitForm()">Submit</button>
+    </div>
+  </div> 
+
+  
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
